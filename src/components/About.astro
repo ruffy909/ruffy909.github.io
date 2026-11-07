@@ -1,0 +1,89 @@
+---
+import { about, site } from '../data/site';
+
+const highlights = [
+  { title: 'Performance first', text: 'Lean pages, optimized assets and green Core Web Vitals.' },
+  { title: 'Pixel-perfect UI', text: 'Faithful, responsive builds from Figma to production.' },
+  { title: 'Accessible by default', text: 'Semantic HTML, keyboard support and readable contrast.' },
+  { title: 'SEO ready', text: 'Structured data, clean markup and fast load times.' },
+];
+---
+
+<section class="section" id="about">
+  <div class="container inner">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">01 · About me</p>
+      <h2 class="section-title">Code with craft,<br />design with purpose.</h2>
+    </div>
+
+    <div class="body">
+      <div class="text" data-reveal>
+        {about.map((p) => <p class="muted">{p}</p>)}
+        <p class="meta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Based in {site.location} · Working with clients worldwide
+        </p>
+      </div>
+
+      <ul class="highlights">
+        {
+          highlights.map((h, i) => (
+            <li class="card" data-reveal style={`--delay: ${i * 70}ms`}>
+              <h3>{h.title}</h3>
+              <p class="muted">{h.text}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .text p + p {
+    margin-top: 1.1rem;
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.93rem;
+    color: var(--text);
+  }
+  .meta svg {
+    color: var(--accent-2);
+    flex-shrink: 0;
+  }
+  .highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .highlights li {
+    padding: 1.35rem;
+  }
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 0.35rem;
+  }
+  .highlights p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+  @media (max-width: 860px) {
+    .body {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 480px) {
+    .highlights {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,165 @@
+---
+import { projects, site } from '../data/site';
+
+const github = site.socials.find((s) => s.label === 'GitHub')?.href;
+// Each project gets a distinct gradient "cover" — no image downloads needed.
+const hues = [228, 170, 280, 20, 200, 330];
+---
+
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-head head" data-reveal>
+      <div>
+        <p class="eyebrow">03 · Projects</p>
+        <h2 class="section-title">Selected work</h2>
+      </div>
+      {github && <a href={github} class="btn" target="_blank" rel="noopener noreferrer">More on GitHub ↗</a>}
+    </div>
+
+    <div class="grid">
+      {
+        projects.map((p, i) => (
+          <article class:list={['card', 'project', { featured: p.featured }]} data-reveal style={`--delay: ${(i % 2) * 90}ms; --h: ${hues[i % hues.length]}`}>
+            <div class="cover" aria-hidden="true">
+              <span class="num">{String(i + 1).padStart(2, '0')}</span>
+              <div class="mock">
+                <span /><span /><span />
+              </div>
+            </div>
+            <div class="content">
+              <h3>{p.title}</h3>
+              <p class="muted">{p.description}</p>
+              <ul class="tags">
+                {p.tags.map((t) => <li class="chip">{t}</li>)}
+              </ul>
+              <div class="links">
+                {p.live && (
+                  <a href={p.live} target="_blank" rel="noopener noreferrer">
+                    Live site <span class="sr-only">for {p.title}</span> ↗
+                  </a>
+                )}
+                {p.code && (
+                  <a href={p.code} target="_blank" rel="noopener noreferrer">
+                    Source code <span class="sr-only">for {p.title}</span> ↗
+                  </a>
+                )}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+  .project {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .cover {
+    position: relative;
+    aspect-ratio: 16 / 8;
+    background:
+      radial-gradient(circle at 20% 20%, hsl(var(--h) 90% 70% / 0.55), transparent 55%),
+      radial-gradient(circle at 85% 80%, hsl(calc(var(--h) + 50) 85% 60% / 0.45), transparent 55%),
+      var(--bg-soft);
+    border-bottom: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .num {
+    position: absolute;
+    top: 1rem;
+    left: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .mock {
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    bottom: -12%;
+    height: 72%;
+    border-radius: 12px 12px 0 0;
+    background: color-mix(in srgb, var(--surface) 88%, transparent);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    transition: transform 0.5s var(--ease);
+  }
+  .project:hover .mock {
+    transform: translateY(-8px);
+  }
+  .mock span {
+    height: 0.55rem;
+    border-radius: 99px;
+    background: var(--border);
+  }
+  .mock span:nth-child(1) {
+    width: 40%;
+    background: hsl(var(--h) 80% 65% / 0.8);
+  }
+  .mock span:nth-child(2) {
+    width: 85%;
+  }
+  .mock span:nth-child(3) {
+    width: 65%;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.5rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+    letter-spacing: -0.02em;
+  }
+  .content > p {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 1.1rem;
+  }
+  .links {
+    display: flex;
+    gap: 1.25rem;
+    margin-top: auto;
+    padding-top: 1.25rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+  .links a {
+    color: var(--accent);
+    transition: color 0.2s;
+  }
+  .links a:hover {
+    color: var(--accent-2);
+  }
+  @media (max-width: 760px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,103 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="section" id="contact">
+  <div class="container">
+    <div class="panel" data-reveal>
+      <div class="glow" aria-hidden="true"></div>
+      <p class="eyebrow">05 · Contact</p>
+      <h2 class="section-title">Have a project in mind?<br />Let's build it together.</h2>
+      <p class="muted lead">
+        I'm currently taking on new projects. Send me a message and I'll get back to you within 24 hours.
+      </p>
+
+      <div class="actions">
+        <a href={`mailto:${site.email}`} class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          Email me
+        </a>
+        <button type="button" class="btn copy" data-copy={site.email}>
+          <span data-copy-label>Copy email</span>
+        </button>
+      </div>
+
+      <ul class="socials">
+        {
+          site.socials.map((s) => (
+            <li>
+              <a href={s.href} target="_blank" rel="noopener noreferrer me">{s.label} ↗</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .panel {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: clamp(2.5rem, 7vw, 5rem) clamp(1.25rem, 5vw, 4rem);
+    border-radius: calc(var(--radius) * 1.5);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    isolation: isolate;
+  }
+  .glow {
+    position: absolute;
+    inset: auto -20% -60% -20%;
+    height: 120%;
+    z-index: -1;
+    background: radial-gradient(ellipse at center, var(--glow), transparent 60%);
+  }
+  .lead {
+    max-width: 34rem;
+    margin: 1.1rem auto 0;
+  }
+  .actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+  .copy {
+    cursor: pointer;
+    color: var(--text);
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .socials {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 2.25rem;
+    font-size: 0.93rem;
+  }
+  .socials a {
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+  .socials a:hover {
+    color: var(--accent);
+  }
+</style>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('[data-copy]');
+  const label = btn?.querySelector<HTMLElement>('[data-copy-label]');
+  btn?.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(btn.dataset.copy!);
+      label!.textContent = 'Copied ✓';
+    } catch {
+      label!.textContent = btn.dataset.copy!;
+    }
+    setTimeout(() => (label!.textContent = 'Copy email'), 2000);
+  });
+</script>

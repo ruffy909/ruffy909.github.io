@@ -1,0 +1,84 @@
+---
+import { experience } from '../data/site';
+---
+
+<section class="section alt" id="experience">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">04 · Experience</p>
+      <h2 class="section-title">Where I've worked</h2>
+    </div>
+
+    <ol class="timeline">
+      {
+        experience.map((e, i) => (
+          <li data-reveal style={`--delay: ${i * 80}ms`}>
+            <p class="period">{e.period}</p>
+            <div>
+              <h3>{e.role}</h3>
+              <p class="company">{e.company}</p>
+              <p class="muted">{e.summary}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .alt {
+    background: var(--bg-soft);
+    border-block: 1px solid var(--border);
+  }
+  .timeline {
+    list-style: none;
+    padding: 0;
+    position: relative;
+    max-width: 52rem;
+  }
+  li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 2rem;
+    padding: 0 0 2.5rem 2rem;
+    border-left: 1px solid var(--border);
+  }
+  li:last-child {
+    padding-bottom: 0;
+  }
+  li::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0.45rem;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--bg-soft);
+    border: 2px solid var(--accent);
+    box-shadow: 0 0 0 4px var(--glow);
+  }
+  .period {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--muted);
+    padding-top: 0.15rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+  }
+  .company {
+    color: var(--accent-2);
+    font-size: 0.93rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  @media (max-width: 640px) {
+    li {
+      grid-template-columns: 1fr;
+      gap: 0.35rem;
+    }
+  }
+</style>

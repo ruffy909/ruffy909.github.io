@@ -1,0 +1,55 @@
+---
+import { skills } from '../data/site';
+---
+
+<section class="section alt" id="skills">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">02 · Skills</p>
+      <h2 class="section-title">My toolkit</h2>
+    </div>
+
+    <div class="groups">
+      {
+        skills.map((g, i) => (
+          <article class="card" data-reveal style={`--delay: ${i * 80}ms`}>
+            <h3>{g.group}</h3>
+            <ul>
+              {g.items.map((item) => (
+                <li class="chip">{item}</li>
+              ))}
+            </ul>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .alt {
+    background: var(--bg-soft);
+    border-block: 1px solid var(--border);
+  }
+  .groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  article {
+    padding: 1.5rem;
+  }
+  h3 {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .chip {
+    background: var(--bg);
+    color: var(--text);
+  }
+</style>
