@@ -99,4 +99,11 @@ export const experience = [
     summary:
       'Leading the technical side of client projects — planning, building and launching high-converting landing pages and websites, and guiding the team from design to delivery.',
   },
+  {
+    role: 'WordPress Web Developer',
+    company: 'Night Birds Solutions',
+    period: '2018 — 2020',
+    summary:
+      'Built and maintained custom WordPress websites for clients — themes, plugins, page builders and responsive layouts.',
+  },
 ];
