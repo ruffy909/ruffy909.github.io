@@ -6,7 +6,7 @@ export const site = {
   name: 'Ruffy John A. Manito',
   role: 'Web Developer',
   location: 'Philippines',
-  email: 'designyes2landingpage@gmail.com',
+  email: 'ruffy909@gmail.com',
   url: 'https://ruffy909.github.io',
   available: true, // shows the "Available for work" badge
   headline: 'I build fast, accessible websites that people enjoy using.',
