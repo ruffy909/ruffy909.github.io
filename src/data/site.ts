@@ -101,9 +101,16 @@ export const experience = [
   },
   {
     role: 'WordPress Web Developer',
-    company: 'Night Birds Solutions',
+    company: 'Night Birds Solutions · Philippines',
     period: '2018 — 2020',
     summary:
       'Built and maintained custom WordPress websites for clients — themes, plugins, page builders and responsive layouts.',
+  },
+  {
+    role: 'Customer Sales Representative',
+    company: 'Panasiatic Solutions · Philippines',
+    period: '2017 — 2018',
+    summary:
+      'Supported customers and drove sales — building the communication and client-handling skills I now bring to every web project.',
   },
 ];
