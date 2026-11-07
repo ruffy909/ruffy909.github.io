@@ -93,23 +93,10 @@ export const projects = [
 
 export const experience = [
   {
-    role: 'Freelance Web Developer',
-    company: 'Self-employed',
-    period: '2023 — Present',
+    role: 'Project Technical Lead',
+    company: 'Yes2Landing Page · Kuala Lumpur, Malaysia',
+    period: '2020 — Present',
     summary:
-      'Designing and building websites and landing pages for small businesses and startups, from first sketch to launch.',
-  },
-  {
-    role: 'Frontend Developer',
-    company: 'Company Name',
-    period: '2021 — 2023',
-    summary:
-      'Built reusable UI components, improved page load times by 40%, and collaborated closely with designers.',
-  },
-  {
-    role: 'Web Development Intern',
-    company: 'Company Name',
-    period: '2020 — 2021',
-    summary: 'Developed responsive pages and fixed accessibility issues across client websites.',
+      'Leading the technical side of client projects — planning, building and launching high-converting landing pages and websites, and guiding the team from design to delivery.',
   },
 ];
