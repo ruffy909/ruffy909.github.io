@@ -28,7 +28,7 @@ export const about = [
 ];
 
 export const stats = [
-  { value: '3+', label: 'Years experience' },
+  { value: '8+', label: 'Years experience' },
   { value: '25+', label: 'Projects shipped' },
   { value: '100', label: 'Lighthouse scores' },
 ];
