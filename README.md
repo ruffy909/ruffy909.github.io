@@ -1,4 +1,4 @@
-# Ruffy John A. Manito — Portfolio
+# Ruffy John A. Manito | Portfolio
 
 Built with [Astro](https://astro.build). Static, fast, and almost JavaScript-free.
 

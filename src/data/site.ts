@@ -11,7 +11,7 @@ export const site = {
   available: true, // shows the "Available for work" badge
   headline: 'I build fast, accessible websites that people enjoy using.',
   intro:
-    'Web developer focused on performance, clean design, and code that is easy to maintain. I turn ideas into polished products — from landing pages to full web apps.',
+    'Web developer focused on performance, clean design, and code that is easy to maintain. I turn ideas into polished products, from landing pages to full web apps.',
   description:
     'Portfolio of Ruffy John A. Manito, a web developer building fast, accessible and beautifully designed websites and web applications.',
   resume: '', // e.g. '/resume.pdf' (put the file in /public)
@@ -23,7 +23,7 @@ export const site = {
 };
 
 export const about = [
-  "I'm a web developer who cares about the details — how a page loads, how it feels on a phone, and whether everyone can use it. I enjoy working across the stack, but my favourite place is where design meets code.",
+  "I'm a web developer who cares about the details: how a page loads, how it feels on a phone, and whether everyone can use it. I enjoy working across the stack, but my favourite place is where design meets code.",
   'When I start a project I focus on three things: speed, clarity, and maintainability. The result is websites that rank well, convert visitors, and are a pleasure to extend later.',
 ];
 
@@ -95,22 +95,22 @@ export const experience = [
   {
     role: 'Project Technical Lead',
     company: 'Yes2Landing Page · Kuala Lumpur, Malaysia',
-    period: '2020 — Present',
+    period: '2020 - Present',
     summary:
-      'Leading the technical side of client projects — planning, building and launching high-converting landing pages and websites, and guiding the team from design to delivery.',
+      'Leading the technical side of client projects: planning, building and launching high-converting landing pages and websites, and guiding the team from design to delivery.',
   },
   {
     role: 'WordPress Web Developer',
     company: 'Night Birds Solutions · Philippines',
-    period: '2018 — 2020',
+    period: '2018 - 2020',
     summary:
-      'Built and maintained custom WordPress websites for clients — themes, plugins, page builders and responsive layouts.',
+      'Built and maintained custom WordPress websites for clients, including themes, plugins, page builders and responsive layouts.',
   },
   {
     role: 'Customer Sales Representative',
     company: 'Panasiatic Solutions · Philippines',
-    period: '2017 — 2018',
+    period: '2017 - 2018',
     summary:
-      'Supported customers and drove sales — building the communication and client-handling skills I now bring to every web project.',
+      'Supported customers and drove sales, building the communication and client-handling skills I now bring to every web project.',
   },
 ];
