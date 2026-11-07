@@ -1,5 +1,16 @@
 ---
-import { skills } from '../data/site';
+import { skills, skillLevels, stats } from '../data/site';
+
+const years = stats.find((s) => s.label === 'Years experience')?.value ?? '';
+const totalTools = skills.reduce((n, g) => n + g.items.length, 0);
+const avg = Math.round(skillLevels.reduce((n, s) => n + s.level, 0) / skillLevels.length);
+
+const summary = [
+  { value: years, label: 'Years building for the web' },
+  { value: `${totalTools}+`, label: 'Tools & technologies' },
+  { value: `${skills.length}`, label: 'Areas of expertise' },
+  { value: `${avg}%`, label: 'Average core proficiency' },
+];
 ---
 
 <section class="section alt" id="skills">
@@ -7,6 +18,36 @@ import { skills } from '../data/site';
     <div class="section-head" data-reveal>
       <p class="eyebrow">02 · Skills</p>
       <h2 class="section-title">My toolkit</h2>
+    </div>
+
+    <dl class="summary" data-reveal>
+      {
+        summary.map((s) => (
+          <div>
+            <dt class="muted">{s.label}</dt>
+            <dd>{s.value}</dd>
+          </div>
+        ))
+      }
+    </dl>
+
+    <div class="card levels" data-reveal>
+      <h3>Core skills</h3>
+      <ul>
+        {
+          skillLevels.map((s, i) => (
+            <li style={`--level: ${s.level}%; --i: ${i}`}>
+              <div class="row">
+                <span>{s.name}</span>
+                <span class="pct">{s.level}%</span>
+              </div>
+              <div class="track" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow={s.level} aria-label={s.name}>
+                <span class="fill" />
+              </div>
+            </li>
+          ))
+        }
+      </ul>
     </div>
 
     <div class="groups">
@@ -31,6 +72,89 @@ import { skills } from '../data/site';
     background: var(--bg-soft);
     border-block: 1px solid var(--border);
   }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .summary div {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 1.25rem 1.4rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .summary dd {
+    font-size: clamp(1.7rem, 3.5vw, 2.3rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    background: linear-gradient(100deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .summary dt {
+    font-size: 0.85rem;
+    margin-top: 0.35rem;
+  }
+
+  .levels {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1rem;
+  }
+  .levels:hover {
+    transform: none;
+  }
+  .levels h3 {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+  }
+  .levels ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.35rem 3rem;
+  }
+  .row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.93rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .pct {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+  .track {
+    height: 8px;
+    border-radius: 99px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .fill {
+    display: block;
+    height: 100%;
+    width: var(--level);
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    transform-origin: left;
+  }
+  /* Bars grow in when the panel scrolls into view (JS only; full width without JS). */
+  :global(.js) .fill {
+    transform: scaleX(0);
+    transition: transform 1.1s var(--ease);
+    transition-delay: calc(var(--i) * 70ms + 150ms);
+  }
+  :global(.js) .levels:global(.is-visible) .fill {
+    transform: scaleX(1);
+  }
+
   .groups {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -39,11 +163,11 @@ import { skills } from '../data/site';
   article {
     padding: 1.5rem;
   }
-  h3 {
+  article h3 {
     font-size: 1.05rem;
     margin-bottom: 1rem;
   }
-  ul {
+  article ul {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
@@ -51,5 +175,14 @@ import { skills } from '../data/site';
   .chip {
     background: var(--bg);
     color: var(--text);
+  }
+
+  @media (max-width: 860px) {
+    .summary {
+      grid-template-columns: 1fr 1fr;
+    }
+    .levels ul {
+      grid-template-columns: 1fr;
+    }
   }
 </style>

@@ -52,6 +52,18 @@ export const skills = [
   },
 ];
 
+// Proficiency bars in the Toolkit section. `level` is 0-100.
+export const skillLevels = [
+  { name: 'WordPress', level: 95 },
+  { name: 'HTML & CSS', level: 95 },
+  { name: 'Responsive design', level: 92 },
+  { name: 'Elementor', level: 90 },
+  { name: 'Landing pages', level: 90 },
+  { name: 'SEO', level: 85 },
+  { name: 'JavaScript', level: 80 },
+  { name: 'Figma', level: 80 },
+];
+
 export const projects = [
   {
     title: 'SaaS Landing Page',
