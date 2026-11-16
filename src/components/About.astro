@@ -2,10 +2,10 @@
 import { about, site } from '../data/site';
 
 const highlights = [
-  { title: 'Performance first', text: 'Lean pages, optimized assets and green Core Web Vitals.' },
-  { title: 'Pixel-perfect UI', text: 'Faithful, responsive builds from Figma to production.' },
-  { title: 'Accessible by default', text: 'Semantic HTML, keyboard support and readable contrast.' },
-  { title: 'SEO ready', text: 'Structured data, clean markup and fast load times.' },
+  { title: 'Performance first', text: 'Lean pages, optimized assets and green Core Web Vitals.', icon: 'M13 2 3 14h9l-1 8 10-12h-9z', hue: 228 },
+  { title: 'Pixel-perfect UI', text: 'Faithful, responsive builds from Figma to production.', icon: 'M12 19l7-7 3 3-7 7zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18zM2 2l7.6 7.6M11 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z', hue: 280 },
+  { title: 'Accessible by default', text: 'Semantic HTML, keyboard support and readable contrast.', icon: 'M12 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM4 8l8 2 8-2M12 10v5l-3 7M12 15l3 7', hue: 170 },
+  { title: 'SEO ready', text: 'Structured data, clean markup and fast load times.', icon: 'M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.3-4.3', hue: 30 },
 ];
 ---
 
@@ -18,7 +18,7 @@ const highlights = [
   <div class="container inner">
     <div class="section-head" data-reveal>
       <p class="eyebrow">01 · About me</p>
-      <h2 class="section-title">Code with craft,<br />design with purpose.</h2>
+      <h2 class="section-title">Code with craft,<br />design with <span class="hl">purpose.</span></h2>
     </div>
 
     <div class="body">
@@ -33,7 +33,10 @@ const highlights = [
       <ul class="highlights">
         {
           highlights.map((h, i) => (
-            <li class="card" data-reveal style={`--delay: ${i * 70}ms`}>
+            <li class="card" data-reveal style={`--delay: ${i * 70}ms; --h: ${h.hue}`}>
+              <span class="icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={h.icon} /></svg>
+              </span>
               <h3>{h.title}</h3>
               <p class="muted">{h.text}</p>
             </li>
@@ -91,6 +94,20 @@ const highlights = [
     background: color-mix(in srgb, var(--surface) 85%, transparent);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
+  }
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    color: hsl(var(--h) 90% 72%);
+    background: hsl(var(--h) 90% 65% / 0.12);
+    border: 1px solid hsl(var(--h) 90% 65% / 0.3);
+  }
+  :global([data-theme='light']) .icon {
+    color: hsl(var(--h) 70% 42%);
   }
   .body {
     display: grid;

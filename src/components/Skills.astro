@@ -5,6 +5,13 @@ const years = stats.find((s) => s.label === 'Years experience')?.value ?? '';
 const totalTools = skills.reduce((n, g) => n + g.items.length, 0);
 const avg = Math.round(skillLevels.reduce((n, s) => n + s.level, 0) / skillLevels.length);
 
+const groupStyle = [
+  { hue: 228, icon: 'M3 3h18v18H3zM3 9h18M9 21V9' },
+  { hue: 170, icon: 'm16 18 6-6-6-6M8 6l-6 6 6 6' },
+  { hue: 280, icon: 'M12 22a10 10 0 1 1 10-10c0 3-2.5 3-4 3h-2a2 2 0 0 0-1 3.7c.6.4 1 1 1 1.6 0 1-1 1.7-4 1.7zM7.5 10.5h.01M12 7.5h.01M16.5 10.5h.01' },
+  { hue: 30, icon: 'M22 11.1V12a10 10 0 1 1-5.9-9.1M22 4 12 14l-3-3' },
+];
+
 const summary = [
   { value: years, label: 'Years building for the web' },
   { value: `${totalTools}+`, label: 'Tools & technologies' },
@@ -17,7 +24,7 @@ const summary = [
   <div class="container">
     <div class="section-head" data-reveal>
       <p class="eyebrow">02 · Skills</p>
-      <h2 class="section-title">My toolkit</h2>
+      <h2 class="section-title">My <span class="hl">toolkit</span></h2>
     </div>
 
     <dl class="summary" data-reveal>
@@ -53,8 +60,13 @@ const summary = [
     <div class="groups">
       {
         skills.map((g, i) => (
-          <article class="card" data-reveal style={`--delay: ${i * 80}ms`}>
-            <h3>{g.group}</h3>
+          <article class="card group" data-reveal style={`--delay: ${i * 80}ms; --h: ${groupStyle[i % groupStyle.length].hue}`}>
+            <div class="group-head">
+              <span class="icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d={groupStyle[i % groupStyle.length].icon} /></svg>
+              </span>
+              <h3>{g.group}</h3>
+            </div>
             <ul>
               {g.items.map((item) => (
                 <li class="chip">{item}</li>
@@ -80,12 +92,16 @@ const summary = [
     margin-bottom: 1rem;
   }
   .summary div {
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column-reverse;
     padding: 1.25rem 1.4rem;
     border-radius: var(--radius);
     border: 1px solid var(--border);
-    background: var(--surface);
+    background:
+      radial-gradient(circle at 100% 0%, var(--glow), transparent 60%),
+      var(--surface);
   }
   .summary dd {
     font-size: clamp(1.7rem, 3.5vw, 2.3rem);
@@ -163,9 +179,37 @@ const summary = [
   article {
     padding: 1.5rem;
   }
+  .group {
+    overflow: hidden;
+  }
+  .group::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--h) 90% 65%), transparent);
+  }
+  .group-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.1rem;
+  }
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 10px;
+    color: hsl(var(--h) 90% 72%);
+    background: hsl(var(--h) 90% 65% / 0.12);
+    border: 1px solid hsl(var(--h) 90% 65% / 0.3);
+  }
+  :global([data-theme='light']) .icon {
+    color: hsl(var(--h) 70% 42%);
+  }
   article h3 {
     font-size: 1.05rem;
-    margin-bottom: 1rem;
   }
   article ul {
     display: flex;

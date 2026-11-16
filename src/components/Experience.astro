@@ -6,7 +6,7 @@ import { experience } from '../data/site';
   <div class="container">
     <div class="section-head" data-reveal>
       <p class="eyebrow">04 · Experience</p>
-      <h2 class="section-title">Where I've worked</h2>
+      <h2 class="section-title">Where I've <span class="hl">worked</span></h2>
     </div>
 
     <ol class="timeline">
@@ -14,7 +14,7 @@ import { experience } from '../data/site';
         experience.map((e, i) => (
           <li data-reveal style={`--delay: ${i * 80}ms`}>
             <p class="period">{e.period}</p>
-            <div>
+            <div class="card entry">
               <h3>{e.role}</h3>
               <p class="company">{e.company}</p>
               <p class="muted">{e.summary}</p>
@@ -51,8 +51,9 @@ import { experience } from '../data/site';
   li::before {
     content: '';
     position: absolute;
+    z-index: 2;
     left: -6px;
-    top: 0.45rem;
+    top: 1.6rem;
     width: 11px;
     height: 11px;
     border-radius: 50%;
@@ -64,7 +65,29 @@ import { experience } from '../data/site';
     font-family: var(--font-mono);
     font-size: 0.85rem;
     color: var(--muted);
-    padding-top: 0.15rem;
+    padding-top: 1.45rem;
+  }
+  .entry {
+    padding: 1.35rem 1.5rem;
+  }
+  li:first-child .entry {
+    border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
+    background:
+      radial-gradient(circle at 100% 0%, var(--glow), transparent 55%),
+      var(--surface);
+  }
+  li:first-child::before {
+    background: var(--accent);
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 60%;
+    background: linear-gradient(var(--accent), transparent);
+    z-index: 1;
   }
   h3 {
     font-size: 1.1rem;

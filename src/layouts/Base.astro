@@ -87,6 +87,21 @@ const jsonLd = {
       } else {
         els.forEach((el) => el.classList.add('is-visible'));
       }
+
+      // Card spotlight: feed the cursor position to CSS.
+      if (matchMedia('(hover: hover)').matches) {
+        document.addEventListener(
+          'pointermove',
+          (e) => {
+            const card = (e.target as Element).closest<HTMLElement>('.card');
+            if (!card) return;
+            const r = card.getBoundingClientRect();
+            card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+            card.style.setProperty('--my', `${e.clientY - r.top}px`);
+          },
+          { passive: true },
+        );
+      }
     </script>
   </body>
 </html>
