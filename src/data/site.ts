@@ -11,7 +11,7 @@ export const site = {
   available: true, // shows the "Available for work" badge
   headline: 'I build fast, accessible websites that people enjoy using.',
   intro:
-    'Web developer focused on performance, clean design, and code that is easy to maintain. I turn ideas into polished products, from landing pages to full web apps.',
+    'Web developer focused on performance, clean design, and code that is easy to maintain. I turn ideas into polished products, from landing pages to complete sales funnels.',
   description:
     'Portfolio of Ruffy John A. Manito, a web developer building fast, accessible and beautifully designed websites and web applications.',
   resume: '', // e.g. '/resume.pdf' (put the file in /public)
@@ -23,7 +23,7 @@ export const site = {
 };
 
 export const about = [
-  "I'm a web developer who cares about the details: how a page loads, how it feels on a phone, and whether everyone can use it. I enjoy working across the stack, but my favourite place is where design meets code.",
+  "I'm a web developer who cares about the details: how a page loads, how it feels on a phone, and whether everyone can use it. I enjoy every part of building a site, but my favourite place is where design meets code.",
   'When I start a project I focus on three things: speed, clarity, and maintainability. The result is websites that rank well, convert visitors, and are a pleasure to extend later.',
 ];
 
@@ -35,16 +35,16 @@ export const stats = [
 
 export const skills = [
   {
-    group: 'Frontend',
-    items: ['HTML', 'CSS', 'JavaScript', 'TypeScript', 'React', 'Astro', 'Tailwind CSS'],
+    group: 'Platforms & Builders',
+    items: ['WordPress', 'Elementor', 'ClickFunnels', 'GoHighLevel (GHL)'],
   },
   {
-    group: 'Backend',
-    items: ['Node.js', 'Express', 'REST APIs', 'PostgreSQL', 'MongoDB'],
+    group: 'Web Basics',
+    items: ['HTML', 'CSS', 'JavaScript'],
   },
   {
-    group: 'Tools & Platforms',
-    items: ['Git', 'Figma', 'Vite', 'Vercel', 'Netlify', 'WordPress', 'Elementor'],
+    group: 'Design',
+    items: ['Figma'],
   },
   {
     group: 'Practices',
@@ -55,39 +55,39 @@ export const skills = [
 // Proficiency bars in the Toolkit section. `level` is 0-100.
 export const skillLevels = [
   { name: 'WordPress', level: 95 },
-  { name: 'HTML & CSS', level: 95 },
-  { name: 'Responsive design', level: 92 },
-  { name: 'Elementor', level: 90 },
-  { name: 'Landing pages', level: 90 },
+  { name: 'Elementor', level: 95 },
+  { name: 'ClickFunnels', level: 90 },
+  { name: 'GoHighLevel (GHL)', level: 90 },
+  { name: 'Landing pages', level: 92 },
+  { name: 'Responsive design', level: 90 },
+  { name: 'HTML & CSS', level: 88 },
   { name: 'SEO', level: 85 },
-  { name: 'JavaScript', level: 80 },
-  { name: 'Figma', level: 80 },
 ];
 
 export const projects = [
   {
-    title: 'SaaS Landing Page',
+    title: 'High-Converting Sales Funnel',
     description:
-      'High-converting marketing site with animated sections, pricing tables and a blog. Scores 100 on every Lighthouse category.',
-    tags: ['Astro', 'Tailwind', 'SEO'],
+      'Multi-step sales funnel with opt-in, sales and thank-you pages, built to turn visitors into leads and customers.',
+    tags: ['ClickFunnels', 'Landing pages'],
     live: 'https://example.com',
     code: 'https://github.com/ruffy909',
     featured: true,
   },
   {
-    title: 'E-commerce Storefront',
+    title: 'Business Website',
     description:
-      'Headless storefront with product filtering, cart, and checkout integration. Built for speed on low-end mobile devices.',
-    tags: ['React', 'TypeScript', 'Stripe'],
+      'Fast, responsive company website with custom page designs, contact forms and on-page SEO.',
+    tags: ['WordPress', 'Elementor', 'SEO'],
     live: 'https://example.com',
     code: 'https://github.com/ruffy909',
     featured: true,
   },
   {
-    title: 'Task Management App',
+    title: 'Funnel & CRM Automation',
     description:
-      'Full-stack productivity app with authentication, drag-and-drop boards and real-time updates.',
-    tags: ['Node.js', 'PostgreSQL', 'React'],
+      'Lead-capture funnel connected to a CRM pipeline with automated follow-up emails and SMS.',
+    tags: ['GoHighLevel (GHL)', 'Automation'],
     live: '',
     code: 'https://github.com/ruffy909',
     featured: false,
