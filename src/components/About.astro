@@ -10,11 +10,6 @@ const highlights = [
 ---
 
 <section class="section about" id="about">
-  <div class="bg" aria-hidden="true">
-    <div class="dots"></div>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-  </div>
   <div class="container inner">
     <div class="section-head" data-reveal>
       <p class="eyebrow">01 · About me</p>
@@ -49,51 +44,11 @@ const highlights = [
 
 <style>
   .about {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    border-top: 1px solid var(--border);
-    background: linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--accent) 6%, var(--bg)) 50%, var(--bg) 100%);
-  }
-  .bg {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-  }
-  .dots {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(var(--border) 1.2px, transparent 1.2px);
-    background-size: 22px 22px;
-    mask-image: radial-gradient(ellipse 60% 70% at 20% 30%, #000 20%, transparent 70%);
-    -webkit-mask-image: radial-gradient(ellipse 60% 70% at 20% 30%, #000 20%, transparent 70%);
-  }
-  .glow {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-  }
-  .glow-1 {
-    width: 380px;
-    height: 380px;
-    top: 10%;
-    right: -80px;
-    background: var(--accent);
-    opacity: 0.16;
-  }
-  .glow-2 {
-    width: 300px;
-    height: 300px;
-    bottom: -60px;
-    left: 25%;
-    background: var(--accent-2);
-    opacity: 0.12;
+    background: var(--surface);
+    border-block: 1px solid var(--border);
   }
   .highlights li {
-    background: color-mix(in srgb, var(--surface) 85%, transparent);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: var(--bg-soft);
   }
   .icon {
     display: grid;
